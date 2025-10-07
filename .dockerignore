@@ -1,0 +1,40 @@
+# Python bytecode
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.so
+
+# Logs
+*.log
+log.txt
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Git
+.git/
+.gitignore
+
+# Virtual environment
+.venv/
+venv/
+
+# Test results
+.coverage
+.pytest_cache/
+*.csv
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Documentation
+README.md
+
+# Local env files
+.env
+.env.example
