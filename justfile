@@ -31,7 +31,7 @@ redis-start:
         echo "✅ Redis container created and started"
     fi
 
-@redis-stop:
+redis-stop:
     #!/usr/bin/env bash
     if docker stop redis-calculate-pi 2>/dev/null; then
         echo "🛑 Redis stopped"
@@ -39,7 +39,7 @@ redis-start:
         echo "⚠️  Redis not running"
     fi
 
-@redis-rm:
+redis-rm:
     #!/usr/bin/env bash
     if docker rm -f redis-calculate-pi 2>/dev/null; then
         echo "🗑️  Redis container removed"
@@ -50,7 +50,7 @@ redis-start:
 @worker:
     uv run celery -A app.celery_app worker --loglevel=info
 
-@stop:
+stop:
     #!/usr/bin/env bash
     echo "🛑 Stopping services..."
     if ! pkill -f "celery.*app.celery_app"; then

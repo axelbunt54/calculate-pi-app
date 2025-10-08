@@ -18,6 +18,10 @@ log.txt
 # Git
 .git/
 .gitignore
+.github/
+
+# Test files
+tests/
 
 # Virtual environment
 .venv/
@@ -38,3 +42,6 @@ README.md
 # Local env files
 .env
 .env.example
+
+# justfile
+justfile

@@ -67,7 +67,7 @@ def redirect_to_docs():
             "description": "Calculation request failed",
             "content": {
                 "application/json": {
-                    "example": {"detail": "Failed to calculate Pi: <reason>"}
+                    "example": {"detail": "Failed to start calculation"}
                 }
             },
         },
@@ -95,7 +95,7 @@ def calculate_pi(request: CalculatePiRequest) -> CalculatePiResponse:
     except Exception as e:
         logger.error(f"Failed to start task: {type(e).__name__}: {e}")
         raise HTTPException(
-            status_code=500, detail=f"Failed to start calculation: {str(e)}"
+            status_code=500, detail="Failed to start calculation"
         )
 
 
@@ -135,10 +135,10 @@ def calculate_pi(request: CalculatePiRequest) -> CalculatePiResponse:
         },
         404: {"description": "Task not found"},
         500: {
-            "description": "Failed to check progress",
+            "description": "Failed to check taskprogress",
             "content": {
                 "application/json": {
-                    "example": {"detail": "Failed to check progress: <reason>"}
+                    "example": {"detail": "Failed to check task progress"}
                 }
             },
         },
@@ -172,10 +172,9 @@ def check_progress(request: ProgressRequest) -> ProgressResponse:
             )
             logger.error(f"Task {request.task_id} failed: {error_info}")
             raise HTTPException(
-                status_code=500, detail=f"Task execution failed: {error_info}"
+                status_code=500, detail="Task execution failed"
             )
 
-        # Task completed successfully
         if task_result.state == "SUCCESS":
             result_data = task_result.result
             return ProgressResponse(
@@ -201,5 +200,5 @@ def check_progress(request: ProgressRequest) -> ProgressResponse:
         )
         raise HTTPException(
             status_code=500,
-            detail=f"Failed to check task progress: {str(e)}",
+            detail="Failed to check task progress",
         )

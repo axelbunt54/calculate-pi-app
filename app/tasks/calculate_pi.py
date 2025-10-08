@@ -54,7 +54,7 @@ def calculate_pi_task(self, n_digits: int) -> ProgressResponse:
             )
 
     logger.info(
-        f"Calculation complete: {pi_value}. (total time: {total_time:.2f}s"
+        f"Calculation complete: {pi_value}. (total time: {total_time:.2f}s)"
     )
 
     response = ProgressResponse(
